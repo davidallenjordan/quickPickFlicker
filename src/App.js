@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import UserList from './components/UserList';
+
 import firebase from './firebase';
 import axios from 'axios';
 
@@ -7,7 +9,7 @@ class App extends Component {
     super();
     this.state = {
       movies: [],
-      userMovieList: []
+      userList: []
     }
   }
 
@@ -19,7 +21,7 @@ class App extends Component {
       console.log(data);
 
       this.setState({
-        userMovieList: newState
+        userList: newState
       })
     })
 
@@ -36,24 +38,28 @@ class App extends Component {
       }
     })
     .then( (res) => {
-      console.log(res)
 
       this.setState({
         movies: res.data.results
       })
 
     })
-
-
-
   }
 
+  getUserList = (event, userMovieList) => {
+    console.log(userMovieList);
 
+    this.setState({
+      userList: userMovieList
+    })
+  }
 
   render() {
     return (
       <div>
         <h1>Pick Flick</h1>
+
+        <UserList getUserList={this.userList}/>
       </div>
     );
   }
