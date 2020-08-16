@@ -10,25 +10,51 @@ class UserList extends Component {
     constructor() {
         super();
         this.state = {
-            userList: []
+            userList: [],
+            userListName: ''
         }
+    }
+
+
+    componentDidMount() {
+        const dbRef = firebase.database().ref();
+        
+        dbRef.on('value', (snapshot) => {
+
+        const newState = [];
+
+        const data = snapshot.val();
+
+        for (let key in data) {
+            const listData = {
+                key: key,
+                info: data[key],
+            }
+            
+            newState.push(listData);
+        }
+
+        this.setState({
+            userList: newState
+            })
+        })
     }
 
     handleChange = (event) => {
         this.setState({
-            userList: event.target.value
+            userListName: event.target.value
         })
     }
 
     handleClick = (event) => {
         event.preventDefault();
-        console.log('Hello');
-        const dbRef = firebase.database().ref('/watchList');
+
+        const newList = firebase.database().ref(this.state.userListName);
         
-        dbRef.push(this.state.userList)
+        newList.push(this.state.userListName)
 
         this.setState({
-            userList:[]
+            userListName: ''
         })
 
         // this.props.getUserList(event, this.state.userList)
@@ -39,8 +65,8 @@ class UserList extends Component {
             <div>
                 <form action="text">
                     <label className="srOnly" htmlFor="newList">New list here</label>
-                    <input onChange={this.handleChange} type="text" name="newList" value={this.state.userList} placeholder="New list here" id="newList" />
-                    <button onClick={this.handleClick}>Add list button +</button>
+                    <input onChange={this.handleChange} type="text" name="newList" value={this.state.userListName} placeholder="New list here" id="newList" />
+                    <button onClick={this.handleClick}>+</button>
                 </form>
                 
                 <ul>
