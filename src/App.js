@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import UserList from './components/UserList';
-
-import firebase from './firebase';
 import axios from 'axios';
 
 class App extends Component {
@@ -13,18 +11,8 @@ class App extends Component {
     }
   }
 
+  
   componentDidMount() {
-    const dbRef = firebase.database().ref();
-    dbRef.on('value', (snapshot) => {
-      const newState = [];
-      const data = snapshot.val();
-      console.log(data);
-
-      this.setState({
-        userList: newState
-      })
-    })
-
     // API Call
     axios({
       url: 'https://api.themoviedb.org/3/discover/movie/',
