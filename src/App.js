@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
+import Header from './components/Header';
 import UserList from './components/UserList';
+import Footer from './components/Footer';
 import axios from 'axios';
+
+// import { library } from '@fortawesome/fontawesome-svg-core';
+// import { fab } from '@fortawesome/free-brands-svg-icons';
+// import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+
+// library.add(fab, faTrashAlt)
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       movies: [],
-      userList: []
+      userList: [],
     }
   }
 
@@ -45,9 +53,16 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h1>Pick Flick</h1>
+        <Header />
 
-        <UserList getUserList={this.userList}/>
+        <UserList 
+          getUserList={this.userList} 
+          moviesList={this.movies}
+        
+        />
+
+        
+        <Footer />
       </div>
     );
   }

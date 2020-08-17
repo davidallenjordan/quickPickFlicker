@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import firebase from '../firebase';
 
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 // Listening for user input and to create a new object in Firebase. When onClick, new list is created
 // Delete button for the whole object (list)
 // Display the Firebase object as a dropdown with a delete button on each item
@@ -11,10 +13,10 @@ class UserList extends Component {
         super();
         this.state = {
             userList: [],
-            userListName: ''
+            userListName: '',
+            movies: []
         }
     }
-
 
     componentDidMount() {
         const dbRef = firebase.database().ref();
@@ -60,26 +62,75 @@ class UserList extends Component {
         // this.props.getUserList(event, this.state.userList)
     }
 
+    // Create handle to delete list
+    handleDeleteList = (deleteList) => {
+        const dbRef = firebase.database().ref();
+
+        dbRef.child(deleteList).remove();
+    }
+
+    // TO DO: Create handle to delete movie
+    // handleDeleteMovie = (deleteList) => {
+    //     const dbRef = firebase.database().ref();
+
+    //     dbRef.child(deleteList).remove();
+    // }
+
+    // TO DO: Create handle to toggle, open and close list
+
     render() {
+
         return(
-            <div>
-                <form action="text">
-                    <label className="srOnly" htmlFor="newList">New list here</label>
-                    <input onChange={this.handleChange} type="text" name="newList" value={this.state.userListName} placeholder="New list here" id="newList" />
-                    <button onClick={this.handleClick}>+</button>
-                </form>
+            <div className="wrapper">
                 
-                <ul>
-                    {/* {
-                        this.state.movies.map((selectedMovie) => {
+                <div className="formContainer">
+                    <form action="text">
+
+                        <fieldset>
+                            <legend>Create your list</legend>
+                                <div className="newListContainer">
+                                    <label className="srOnly" htmlFor="newList">New list here</label>
+                                    <input onChange={this.handleChange} type="text" name="newList" value={this.state.userListName} placeholder="New list here" id="newList" className="newList"/>
+                                    <button className="newListButton" onClick={this.handleClick}>+</button>
+                                </div>
+                        </fieldset>
+                        
+                    </form>
+                </div>
+
+
+                {/* TO DO: FIGURE OUT WHY THERE ARE SIX ARRAYS IN CONSOLE LOG. WHY???!?!?!!*/}
+                <ul className="movieListContainer">
+                    {
+                        this.state.userList.map((listName, index) => {
+                            console.log(this.state.userList);
                             return(
-                            <li>{selectedMovie}</li>
+                                <li className="movieList" key={index}>
+
+                                    <div className="movieListTitle">
+                                        <p>{listName.key}</p>
+                                        <button onClick={() => {this.handleDeleteList(listName.key)}}>Delete List</button>
+                                    </div>
+                                    
+                                    {/* TO DO: Map list and connect to the handleDeleteMovie above */}
+                                    <div className="selectedMoviesinList">
+                                        <ul>
+                                            <li className="selectedMovies">
+                                                <p>Movie 1</p>
+                                                <button onClick={() => {this.handleDeleteMovie()}}>Delete Movie</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    {/* END: Map list and connect to the handleDeleteMovie above */}
+                                    
+                                    
+                                </li>
+                            
                             )
                         })
-                    } */}
+                    }
                 </ul>
 
-                
             </div>
         )
     }
