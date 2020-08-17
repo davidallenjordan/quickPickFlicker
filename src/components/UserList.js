@@ -31,7 +31,8 @@ class UserList extends Component {
             const listData = {
                 key: key,
                 info: data[key],
-            }
+              }
+              // console.log(data[key])
             
             newState.push(listData);
         }
@@ -40,6 +41,7 @@ class UserList extends Component {
             userList: newState
             })
         })
+
     }
 
     handleChange = (event) => {
@@ -50,11 +52,18 @@ class UserList extends Component {
 
     handleClick = (event) => {
         event.preventDefault();
-
-        const newList = firebase.database().ref(this.state.userListName);
         
-        newList.push(this.state.userListName)
+        const newList = firebase.database().ref();
 
+        // newList.push(this.state.movies);
+        
+        const dataToPush = {
+          name: this.state.userListName,
+          list: this.state.movies
+        }
+
+        newList.push(dataToPush);
+        
         this.setState({
             userListName: ''
         })
@@ -69,14 +78,29 @@ class UserList extends Component {
         dbRef.child(deleteList).remove();
     }
 
-    // TO DO: Create handle to delete movie
-    // handleDeleteMovie = (deleteList) => {
-    //     const dbRef = firebase.database().ref();
+    // handleAddMovie = () => {
 
-    //     dbRef.child(deleteList).remove();
     // }
 
+    // TO DO: Create handle to delete movie
+    handleDeleteMovie = (movieListKey, indexOfMovie) => {
+      // Retrieve the two keys from render
+      // Go to database and find record based on movielistkey
+      // Inside of this record refer to list and find the index based on the indexOfMovie
+      // Remove index from array!
+
+      console.log(movieListKey, indexOfMovie)
+      const dbRef = firebase.database().ref(`${movieListKey}/list`);
+
+      dbRef.child(indexOfMovie).remove();
+
+
+
+        // dbRef.child(deleteList).remove();
+    }
+
     // TO DO: Create handle to toggle, open and close list
+
 
     render() {
 
@@ -102,23 +126,32 @@ class UserList extends Component {
                 {/* TO DO: FIGURE OUT WHY THERE ARE SIX ARRAYS IN CONSOLE LOG. WHY???!?!?!!*/}
                 <ul className="movieListContainer">
                     {
-                        this.state.userList.map((listName, index) => {
+                        this.state.userList.map((listName) => {
                             console.log(this.state.userList);
                             return(
-                                <li className="movieList" key={index}>
+                                <li className="movieList" key={listName.key}>
 
                                     <div className="movieListTitle">
-                                        <p>{listName.key}</p>
+                                        <p>{listName.info.name}</p>
                                         <button onClick={() => {this.handleDeleteList(listName.key)}}>Delete List</button>
                                     </div>
                                     
                                     {/* TO DO: Map list and connect to the handleDeleteMovie above */}
                                     <div className="selectedMoviesinList">
                                         <ul>
-                                            <li className="selectedMovies">
-                                                <p>Movie 1</p>
-                                                <button onClick={() => {this.handleDeleteMovie()}}>Delete Movie</button>
-                                            </li>
+                                          
+                                          {
+                                            listName.info.list.map((listItem, index) => {
+                                                return (
+                                                  <li key={`${listName.key}-${index}`}
+                                                    className="selectedMovies">
+                                                    {listItem}
+                                                      <button onClick={() => { this.handleDeleteMovie(listName.key, index)} }
+                                                      >Delete Movie</button>
+                                                  </li>
+                                                )
+                                              })
+                                          }
                                         </ul>
                                     </div>
                                     {/* END: Map list and connect to the handleDeleteMovie above */}
