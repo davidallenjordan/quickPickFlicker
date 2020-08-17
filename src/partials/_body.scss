@@ -1,0 +1,83 @@
+// Header
+
+header {
+    background-color: $secondaryColor;
+}
+
+.headerContainer {
+    display: flex;
+    padding: 60px 0;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titleContainer {
+    width: 60%;
+}
+
+.imageContainer {
+    width: 40%;
+}
+
+// User List Component 
+
+.formContainer {
+    padding: 60px 0;
+}
+
+.newListContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.newListContainer input {
+    width: calc(100% - 20px);
+    margin-right: 20px;
+}
+
+.newListButton {
+    padding: 3px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 4rem;
+    color: $white;
+    background-color: $tertiaryColor
+}
+
+.movieListContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+li.movieList {
+    width: calc(100% / 2 - 30px);
+    margin-bottom: 25px;
+}
+
+.movieListTitle {
+    background-color: $tertiaryColor;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.selectedMoviesinList li {
+    border: 2px solid $black;
+    padding: 10px 20px;
+}
+
+.selectedMovies {
+    display: flex;
+    justify-content: space-between;
+}
+
+// Footer
+
+footer {
+    background-color: $secondaryColor;
+    text-align: center;
+    padding: 20px 0;
+}

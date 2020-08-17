@@ -1,3 +1,91 @@
+// Stripping Styles 
+
+html {
+    font-size: 62.5%;
+}
+
+h1,
+h2,
+h3,
+h4,
+ul,
+p,
+fieldset,
+legend {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    max-width: 1200px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+}
+
+input {
+    background: none;
+    border: none;
+}
+
+fieldset {
+    border: none;
+}
+
+// General Styles
+
 h1 {
-    font-size: 8rem;
+    @include font($headingFont, 6rem);
+    text-transform: uppercase;
+    color: $white;
+}
+
+h2 {
+    @include font($bodyFont, 3.5rem);
+    color: $black;
+}
+
+p {
+    @include font($bodyFont, 2rem);
+    color: $black;
+}
+
+legend {
+    @include font($headingFont, 3.5rem);
+    color: $black;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+input {
+    background-color: $primaryColor;
+    color: $white;
+    @include font($bodyFont, 2rem);
+    padding: 10px 20px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+input::placeholder {
+    color: $black;
 }

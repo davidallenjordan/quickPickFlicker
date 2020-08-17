@@ -1,11 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 
-const Footer = (props) => {
+const Footer = () => {
   return (
     <footer>
-      <p>Developed by Krupali Thakkar, David Allen-Jordan, Clayton Puno, Pik Lin Hoe</p>
+      <div className="wrapper">
+        <p>Developed by Krupali Thakkar, David Allen-Jordan, Clayton Puno, Pik Lin Hoe</p>
+      </div>
     </footer>
   )
 }
-export default Footer
+export default Footer;
