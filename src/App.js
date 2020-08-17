@@ -63,7 +63,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header>
+        <Header />
+        <UserList 
+          getUserList={this.userList}
+          moviesList={this.movies}
+        />
+        <section>
           <div className="Wrapper">
             <div className="Container">
               <h1>Quick Pick Flicker</h1>
@@ -79,10 +84,11 @@ class App extends Component {
               </form>
             </div>
           </div>
-        </header>
+        </section>
         <Gallery
           movieInfo={this.state.movie}
         />
+        <Footer />
 
       </div>
     );
