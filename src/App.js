@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
-import axios from 'axios'
-// import firebase from './firebase';
-// import MovieDetails from './components/MovieDetails';
+
 import Gallery from './components/Gallery'
+import Header from './components/Header';
+import UserList from './components/UserList';
+import Footer from './components/Footer';
+import axios from 'axios';
+
+
+// import { library } from '@fortawesome/fontawesome-svg-core';
+// import { fab } from '@fortawesome/free-brands-svg-icons';
+// import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+
+// library.add(fab, faTrashAlt)
 
 class App extends Component {
   constructor() {
@@ -74,6 +83,7 @@ class App extends Component {
         <Gallery
           movieInfo={this.state.movie}
         />
+
       </div>
     );
   }
