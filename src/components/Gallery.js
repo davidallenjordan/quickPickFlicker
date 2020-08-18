@@ -1,24 +1,25 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 
 const Gallery = (props) => {
-  return (
-    <div className="movieResults">
-      <ul>
-      {
-        props.movieInfo.map((movie) => {
-          console.log(movie);
-          return (
-            <li>
-              <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt={`Poster for ${movie.title}.`} />
-            </li>
-          )
-        })
+  const { movies } = props
 
+  return (
+    <div className="catalogue">
+      {
+        movies.map((movie) => {
+          return (
+            <div key={movie.id} className="movie">
+              <Link to={`/movie/${movie.id}`}>
+                <img src={`http://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                  alt={`Movie poster for ${movie.original_title}`} />
+              </Link>
+            </div>
+          );
+        })
       }
-      </ul>
     </div>
   );
-};
+}
+
 export default Gallery;

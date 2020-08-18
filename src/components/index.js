@@ -1,0 +1,6 @@
+export { default as Gallery } from './Gallery'
+export { default as SearchBar } from './SearchBar'
+export { default as Loader } from './Loader'
+export { default as SaveMovie } from './SaveMovie'
+export { default as FormUserList } from './FormUserList'
+export { default as SavedList } from './SavedList'
