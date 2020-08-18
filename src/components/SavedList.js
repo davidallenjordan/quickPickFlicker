@@ -1,8 +1,10 @@
 
 import React from 'react'
 
+
+
 const SavedList = (props) => {
-    const { userList, handleDeleteList } = props
+    const { userList, handleDeleteList, handleDeleteMovie } = props
     return (
         <ul className="movieListContainer">
             {
@@ -13,7 +15,24 @@ const SavedList = (props) => {
                             <div className="movieListTitle">
                                 <p>{listName.info.name}</p>
                                 <button onClick={() => {handleDeleteList(listName.key)}}>Delete List</button>
-                            </div>    
+                            </div>  
+                        <div className="selectedMoviesinList">
+                          <ul>
+
+                            {
+                              listName.info.list.map((listItem, index) => {
+                                return (
+                                  <li key={`${listName.key}-${index}`}
+                                    className="selectedMovies">
+                                    {listItem}
+                                    <button onClick={() => { handleDeleteMovie(listName.key, index) }}
+                                    >Delete Movie</button>
+                                  </li>
+                                )
+                              })
+                            }
+                          </ul>
+                        </div>  
                         </li>
                     
                     )

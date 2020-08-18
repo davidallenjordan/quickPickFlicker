@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import firebase from '../firebase';
-import { discoverMovies } from '../helpers/api'
 import { FormUserList } from '../components/'
 import { SavedList } from '../components/'
-
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // Listening for user input and to create a new object in Firebase. When onClick, new list is created
 // Delete button for the whole object (list)
@@ -56,10 +53,7 @@ class UserList extends Component {
     handleClick = (event) => {
         event.preventDefault();
         
-        const newList = firebase.database().ref();
-
-        // newList.push(this.state.movies);
-        
+        const newList = firebase.database().ref();        
         const dataToPush = {
           name: this.state.userListName,
           list: this.state.movies
@@ -71,7 +65,6 @@ class UserList extends Component {
             userListName: ''
         })
 
-        // this.props.getUserList(event, this.state.userList)
     }
 
     // Create handle to delete list
@@ -81,11 +74,7 @@ class UserList extends Component {
         dbRef.child(deleteList).remove();
     }
 
-    // handleAddMovie = () => {
-
-    // }
-
-    // TO DO: Create handle to delete movie
+    // Handle to delete movie
     handleDeleteMovie = (movieListKey, indexOfMovie) => {
       // Retrieve the two keys from render
       // Go to database and find record based on movielistkey
@@ -96,14 +85,7 @@ class UserList extends Component {
       const dbRef = firebase.database().ref(`${movieListKey}/list`);
 
       dbRef.child(indexOfMovie).remove();
-
-
-
-        // dbRef.child(deleteList).remove();
     }
-
-    // TO DO: Create handle to toggle, open and close list
-
 
     render() {
         return(
@@ -116,6 +98,7 @@ class UserList extends Component {
                 <SavedList 
                 userList={this.state.userList}
                 handleDeleteList={this.handleDeleteList}
+                handleDeleteMovie={this.handleDeleteMovie}
                 />
 
             </div>

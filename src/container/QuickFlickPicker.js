@@ -10,7 +10,8 @@ class QuickFlickPicker extends Component {
     super(props)
     this.state = {
       movies: [],
-      searchText: ''
+      searchText: '',
+      searched: false
     }
   }
 
@@ -31,12 +32,12 @@ class QuickFlickPicker extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     searchMovies(this.state.searchText)
-    .then(data => this.setState({ movies: data}))
+    .then(data => this.setState({ movies: data, searched: true}))
 
   }
 
   render() {
-    const { movies } = this.state
+    const { movies, searched } = this.state
 
     return (
       <div>
@@ -45,7 +46,7 @@ class QuickFlickPicker extends Component {
           handleSearch={this.handleSearch} 
           handleSubmit={this.handleSubmit}
         />
-        <Gallery movies={movies} />
+        {this.state.searched && <Gallery movies={movies} />}
       </div>
     )
   }

@@ -9,9 +9,11 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 const Routes = () => {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Route exact path="/" component={UserList} />  
       <Route exact path="/" component={QuickFlickPicker} />  
+      <Route exact path="/movie/:movieID" component={UserList} />  
+
       <Route exact path="/movie/:movieID" component={MovieDetails} />
     </Router>
   )
