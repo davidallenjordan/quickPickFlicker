@@ -76,11 +76,6 @@ class UserList extends Component {
 
     // Handle to delete movie
     handleDeleteMovie = (movieListKey, indexOfMovie) => {
-      // Retrieve the two keys from render
-      // Go to database and find record based on movielistkey
-      // Inside of this record refer to list and find the index based on the indexOfMovie
-      // Remove index from array!
-
       console.log(movieListKey, indexOfMovie)
       const dbRef = firebase.database().ref(`${movieListKey}/list`);
 

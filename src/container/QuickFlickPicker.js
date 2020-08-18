@@ -3,7 +3,8 @@ import { discoverMovies, searchMovies } from '../helpers/api'
 import { 
   Gallery, 
   SearchBar 
-} from '../components'
+} from '../components';
+import firebase from '../firebase';
 
 class QuickFlickPicker extends Component {
   constructor(props) {
@@ -33,6 +34,16 @@ class QuickFlickPicker extends Component {
     event.preventDefault();
     searchMovies(this.state.searchText)
     .then(data => this.setState({ movies: data, searched: true}))
+  }
+
+  
+  handleAddMovie = (id, title) => {
+    const listNames = firebase.database().ref()
+
+    console.log(listNames);
+
+    // const dbRef = firebase.database().ref(`${id}/list`);
+    // dbRef.push(title);
 
   }
 
@@ -46,7 +57,10 @@ class QuickFlickPicker extends Component {
           handleSearch={this.handleSearch} 
           handleSubmit={this.handleSubmit}
         />
-        {this.state.searched && <Gallery movies={movies} />}
+        {this.state.searched && <Gallery 
+          movies={movies} 
+          handleAddMovie={this.handleAddMovie} />}
+
       </div>
     )
   }

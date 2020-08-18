@@ -1,20 +1,23 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
 const Gallery = (props) => {
-  const { movies } = props
+  const { movies, handleAddMovie } = props
 
   return (
     <div className="catalogue">
       {
         movies.map((movie) => {
           return (
-            <div key={movie.id} className="movie">
-              <Link to={`/movie/${movie.id}`}>
+            <Fragment>
+
+              <div key={movie.id} className="movie">
                 <img src={`http://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                  alt={`Movie poster for ${movie.original_title}`} />
-              </Link>
-            </div>
+                  alt={`Movie poster for ${movie.title}`} />
+              </div>
+              <button onClick={ () => { handleAddMovie(movie.id, movie.title) }} >Add movie to list</button>
+
+            </Fragment>
           );
         })
       }
