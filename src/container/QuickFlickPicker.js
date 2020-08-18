@@ -12,7 +12,9 @@ class QuickFlickPicker extends Component {
     this.state = {
       movies: [],
       searchText: '',
-      searched: false
+      searched: false,
+      movieListNames: []
+
     }
   }
 
@@ -36,16 +38,41 @@ class QuickFlickPicker extends Component {
     .then(data => this.setState({ movies: data, searched: true}))
   }
 
-  
-  handleAddMovie = (id, title) => {
-    const listNames = firebase.database().ref()
 
-    console.log(listNames);
+  
+  // handleAddMovie = (id, title) => {
+    
+  //   const dbRef = firebase.database().ref();
+    
+  //   dbRef.on('value', (snapshot) => {
+  //     const movieListData = [];
+
+  //     const data = snapshot.val();
+
+  //     for (let key in data) {
+  //       const listData = {
+  //         key: key,
+  //         info: data[key],
+  //       }
+  //       movieListData.push(listData.info.name);
+  //     }
+      
+      
+  //     this.setState({
+  //       movieListNames: movieListData
+  //     })
+      
+  //   })
+  //   console.log(this.movieListNames);
+    
+    // const listNames = firebase.database().getValue();
+
+    // console.log(listNames);
 
     // const dbRef = firebase.database().ref(`${id}/list`);
     // dbRef.push(title);
 
-  }
+  // }
 
   render() {
     const { movies, searched } = this.state
