@@ -4,7 +4,6 @@ import {
   Gallery, 
   SearchBar 
 } from '../components';
-import firebase from '../firebase';
 
 class QuickFlickPicker extends Component {
   constructor(props) {
@@ -13,8 +12,6 @@ class QuickFlickPicker extends Component {
       movies: [],
       searchText: '',
       searched: false,
-      movieListNames: []
-
     }
   }
 
@@ -73,6 +70,8 @@ class QuickFlickPicker extends Component {
     // dbRef.push(title);
 
   // }
+
+  
 
   render() {
     const { movies, searched } = this.state

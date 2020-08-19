@@ -32,7 +32,6 @@ class UserList extends Component {
                 key: key,
                 info: data[key],
               }
-              // console.log(data[key])
             
             newState.push(listData);
         }

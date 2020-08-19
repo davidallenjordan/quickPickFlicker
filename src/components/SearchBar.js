@@ -13,7 +13,6 @@ const SearchBar = (props) => {
       <input type="text" onChange={(e) => handleSearchText(e)}  />
       <button onClick={ handleSearch }>SEARCH</button>
       </form>
-
     </div>
   )
 }
