@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import { discoverMovies, searchMovies } from '../helpers/api'
-import { 
-  Gallery, 
-  SearchBar 
-} from '../components';
+import { Gallery, SearchBar } from '../components';
+import UserList from '../container/UserList';
 
 class QuickFlickPicker extends Component {
   constructor(props) {
@@ -12,6 +10,7 @@ class QuickFlickPicker extends Component {
       movies: [],
       searchText: '',
       searched: false,
+      galleryData: []
     }
   }
 
@@ -36,56 +35,30 @@ class QuickFlickPicker extends Component {
   }
 
 
-  
-  // handleAddMovie = (id, title) => {
-    
-  //   const dbRef = firebase.database().ref();
-    
-  //   dbRef.on('value', (snapshot) => {
-  //     const movieListData = [];
+  // Callback func with parameter represented data we will recieve
+  movieData = (dataFromUserList) => {
+    this.setState({
+      galleryData: dataFromUserList
+    })
+  }
 
-  //     const data = snapshot.val();
-
-  //     for (let key in data) {
-  //       const listData = {
-  //         key: key,
-  //         info: data[key],
-  //       }
-  //       movieListData.push(listData.info.name);
-  //     }
-      
-      
-  //     this.setState({
-  //       movieListNames: movieListData
-  //     })
-      
-  //   })
-  //   console.log(this.movieListNames);
-    
-    // const listNames = firebase.database().getValue();
-
-    // console.log(listNames);
-
-    // const dbRef = firebase.database().ref(`${id}/list`);
-    // dbRef.push(title);
-
-  // }
-
-  
 
   render() {
-    const { movies, searched } = this.state
+    const { movies, galleryData } = this.state
 
     return (
       <div>
+        <UserList galleryInfo={this.movieData}/>
         <SearchBar 
           handleSearchText={this.handleSearchText} 
           handleSearch={this.handleSearch} 
           handleSubmit={this.handleSubmit}
         />
-        {this.state.searched && <Gallery 
+        <Gallery 
           movies={movies} 
-          handleAddMovie={this.handleAddMovie} />}
+          movieData={galleryData}
+        />
+
 
       </div>
     )

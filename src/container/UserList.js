@@ -9,12 +9,12 @@ import { SavedList } from '../components/'
 // Button takes the movie data in the list and sends it to the next Component
 
 class UserList extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             userList: [],
             userListName: '',
-            movies: []
+            movies: ['Add new movie']
         }
     }
 
@@ -34,12 +34,17 @@ class UserList extends Component {
               }
             
             newState.push(listData);
-        }
+          }
+          // Send data to parent
+            this.props.galleryInfo(newState);
 
         this.setState({
             userList: newState
             })
+            
         })
+
+
 
     }
 
@@ -63,7 +68,6 @@ class UserList extends Component {
         this.setState({
             userListName: ''
         })
-
     }
 
     // Create handle to delete list
@@ -80,6 +84,15 @@ class UserList extends Component {
 
       dbRef.child(indexOfMovie).remove();
     }
+
+    // componentDidUpdate() {
+      
+    // }
+    
+    
+  
+
+
 
     render() {
         return(

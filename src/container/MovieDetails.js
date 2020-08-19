@@ -12,6 +12,8 @@ class MovieDetails extends Component {
       savedMovie: []
     }
   }
+
+  
   
   componentDidMount() {
     const { match } = this.props
