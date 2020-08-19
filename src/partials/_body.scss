@@ -65,13 +65,31 @@ li.movieList {
 }
 
 .selectedMoviesinList li {
-    border: 2px solid $black;
+    border-bottom: 2px solid $black;
     padding: 10px 20px;
 }
 
 .selectedMovies {
     display: flex;
     justify-content: space-between;
+}
+
+.deleteListIcon {
+    color: $white;
+    background-color: $tertiaryColor;
+    font-size: 3rem;
+}
+
+.deleteMovieIcon {
+    color: $secondaryColor;
+    background-color: $white;
+    font-size: 2rem;
+}
+
+// Gallery 
+
+.catalogue {
+    display: flex;
 }
 
 // Footer
