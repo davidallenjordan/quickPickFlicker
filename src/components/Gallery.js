@@ -52,7 +52,7 @@ class Gallery extends Component {
           <Fragment key={`frag-${movie.id}`}>
           
           <div className="movie">
-            <img src={`http://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+            <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
             alt={`Movie poster for ${movie.title}`} />
             <p>{`${movie.title}`}</p>
           </div>
