@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { searchMovieDetails } from '../helpers/api'
 import { Loader } from '../components'
 import { SaveMovie } from '../components'
-// import firebase from '../firebase';
 
 class MovieDetails extends Component {
   constructor() {
@@ -14,12 +13,16 @@ class MovieDetails extends Component {
     }
   }
 
+  
+  
   componentDidMount() {
     const { match } = this.props
     searchMovieDetails(match.params.movieID)
-      .then(data => this.setState({ movie: data, loading: false }))   
+    .then(data => this.setState({ movie: data, loading: false })) 
     
   }
+  
+
 
 
   render() {

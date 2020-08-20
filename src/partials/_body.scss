@@ -88,9 +88,9 @@ li.movieList {
 
 // Gallery 
 
-.catalogue {
-    display: flex;
-}
+// .catalogue {
+//     display: flex;
+// }
 
 // Footer
 
@@ -98,4 +98,10 @@ footer {
     background-color: $secondaryColor;
     text-align: center;
     padding: 20px 0;
+}
+
+
+// Hides the first li in userlists
+.selectedMovies:nth-of-type(1) {
+  display: none;
 }

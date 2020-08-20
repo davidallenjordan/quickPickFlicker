@@ -9,14 +9,16 @@ import { SavedList } from '../components/'
 // Button takes the movie data in the list and sends it to the next Component
 
 class UserList extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             userList: [],
             userListName: '',
-            movies: []
+            movies: ['Start adding to this list']
         }
     }
+
+
 
     componentDidMount() {
         const dbRef = firebase.database().ref();
@@ -32,14 +34,16 @@ class UserList extends Component {
                 key: key,
                 info: data[key],
               }
-              // console.log(data[key])
             
             newState.push(listData);
-        }
+          }
+          // Send data to parent
+            this.props.galleryInfo(newState);
 
         this.setState({
             userList: newState
             })
+            
         })
 
     }
@@ -64,23 +68,23 @@ class UserList extends Component {
         this.setState({
             userListName: ''
         })
-
     }
 
     // Create handle to delete list
     handleDeleteList = (deleteList) => {
         const dbRef = firebase.database().ref();
 
-        dbRef.child(deleteList).remove();
+          dbRef.child(deleteList).remove();
     }
 
     // Handle to delete movie
     handleDeleteMovie = (movieListKey, indexOfMovie) => {
-      console.log(movieListKey, indexOfMovie)
       const dbRef = firebase.database().ref(`${movieListKey}/list`);
 
       dbRef.child(indexOfMovie).remove();
+  
     }
+    
 
     render() {
         return(

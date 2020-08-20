@@ -1,21 +1,78 @@
-import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Fragment, Component } from 'react';
+import firebase from '../firebase';
 
-const Gallery = (props) => {
-  const { movies, handleAddMovie } = props
+class Gallery extends Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <div className="catalogue">
-      {
-        movies.map((movie) => {
-          return (
-            <Fragment>
+    this.state = {
+      movieListToPush: [],
+      usersQuery: ''
+    }
+  }
 
-              <div key={movie.id} className="movie">
-                <img src={`http://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                  alt={`Movie poster for ${movie.title}`} />
-              </div>
-              <button onClick={ () => { handleAddMovie(movie.id, movie.title) }} >Add movie to list</button>
+  handleAddMovie = (movieListId, movieName) => {
+    const dbRef = firebase.database().ref();
+    
+    dbRef.on('value', (snapshot) => {
+      
+      let listNames = [];
+      
+      const data = snapshot.val();
+
+      for (let key in data) {
+        if (key === movieListId) {
+          listNames = [...data[key].list]
+          
+        }
+      }
+
+      listNames.push(movieName)
+
+      this.setState({
+        movieListToPush: listNames
+      })
+      
+    })
+
+    const dbRefToMovieList = firebase.database().ref(`${movieListId}/list`);   
+    dbRefToMovieList.update(this.state.movieListToPush);
+
+  }
+  
+  render() {
+    
+    const { movies, movieData } = this.props
+    
+    return (
+      <div className="catalogue">
+    {
+      movies.map((movie) => {
+        return (
+          <Fragment key={`frag-${movie.id}`}>
+          
+          <div className="movie">
+            <img src={`http://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+            alt={`Movie poster for ${movie.title}`} />
+            <p>{`${movie.title}`}</p>
+          </div>
+
+              <ul>
+                {
+                  movieData.map((movieList) => {
+                    return (
+                      <li
+                        ><button onClick={() => {
+                        this.handleAddMovie(movieList.key, movie.title)
+                      }} >{`Add movie to ${movieList.info.name} list`}</button>
+                      </li>
+                    )
+
+                  })
+
+                }
+
+              </ul>
 
             </Fragment>
           );
@@ -23,6 +80,7 @@ const Gallery = (props) => {
       }
     </div>
   );
+  }
 }
 
 export default Gallery;
