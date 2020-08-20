@@ -6,7 +6,7 @@ import {
 } from './container'
 
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import { SearchBar } from './components'
+// import { SearchBar } from './components'
 
 const Routes = () => {
   return (
@@ -15,7 +15,7 @@ const Routes = () => {
       <Route exact path="/movie/:movieID" component={UserList} />  
       {/* <Route exact path="/" component={SearchBar} /> */}
       <Route exact path="/movie/:movieID" component={MovieDetails} />
-      
+
       <Route exact path="/" component={QuickFlickPicker} />  
     </Router>
   )

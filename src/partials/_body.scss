@@ -99,3 +99,9 @@ footer {
     text-align: center;
     padding: 20px 0;
 }
+
+
+// Hides the first li in userlists
+.selectedMovies:nth-of-type(1) {
+  display: none;
+}

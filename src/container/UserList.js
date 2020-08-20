@@ -14,9 +14,11 @@ class UserList extends Component {
         this.state = {
             userList: [],
             userListName: '',
-            movies: ['Add new movie']
+            movies: ['Start adding to this list']
         }
     }
+
+
 
     componentDidMount() {
         const dbRef = firebase.database().ref();
@@ -43,8 +45,6 @@ class UserList extends Component {
             })
             
         })
-
-
 
     }
 
@@ -74,25 +74,17 @@ class UserList extends Component {
     handleDeleteList = (deleteList) => {
         const dbRef = firebase.database().ref();
 
-        dbRef.child(deleteList).remove();
+          dbRef.child(deleteList).remove();
     }
 
     // Handle to delete movie
     handleDeleteMovie = (movieListKey, indexOfMovie) => {
-      console.log(movieListKey, indexOfMovie)
       const dbRef = firebase.database().ref(`${movieListKey}/list`);
 
       dbRef.child(indexOfMovie).remove();
-    }
-
-    // componentDidUpdate() {
-      
-    // }
-    
-    
   
-
-
+    }
+    
 
     render() {
         return(

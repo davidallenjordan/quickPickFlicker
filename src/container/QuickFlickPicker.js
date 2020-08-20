@@ -57,6 +57,7 @@ class QuickFlickPicker extends Component {
         <Gallery 
           movies={movies} 
           movieData={galleryData}
+          userQuery={this.state.searchText}
         />
 
 
