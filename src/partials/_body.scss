@@ -36,32 +36,100 @@ header {
 }
 
 .newListButton {
+  font-size: 4rem;
+}
+
+.searchButton {
+  font-size: 2rem;
+}
+
+.newListButton,
+.searchButton {
     padding: 3px;
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    font-size: 4rem;
     color: $white;
-    background-color: $tertiaryColor
+    background-color: $tertiaryColor;
+
+    &:hover,
+    &:focus {
+      color: $primaryColor;
+    }
 }
 
 .movieListContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  grid-gap: 3rem;
+  margin-bottom: 25px;
 }
 
-li.movieList {
-    width: calc(100% / 2 - 30px);
-    margin-bottom: 25px;
+.movieTitles {
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.buttonContainer {
+  word-wrap: break-word;
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  gap: 10px;
+}
+
+.addMovieButton {
+  max-width: 200px;
+  padding: 10px 10px;
+  font-size: 1.6rem;
+
+  text-align: center;
+  border-radius: 5px;
+  background: $primaryColor;
+}
+
+.addMovieButton:hover {
+    cursor: pointer;
+    transform: translateY(-2px);
+    transition: transform 150ms;
+    box-shadow: 0 3px 3px 0 #2b9348;
+}
+.addMovieButton:focus {
+    border: 2px solid darken($secondaryColor, 40);
+}
+
+.trashButton {
+  background: $tertiaryColor;
+  font-size: 2rem;
+
+  &:hover,
+  &:focus {
+    color: $primaryColor;
+  }
+}
+
+.trashButtonMovie {
+  font-size: 1.8rem;
+
+  background: $white;
+  color: $primaryColor;
+
+  &:hover,
+  &:focus {
+    color: $black;
+  }
 }
 
 .movieListTitle {
-    background-color: $tertiaryColor;
-    padding: 10px 20px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
+  background-color: $tertiaryColor;
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.movieListTitle p {
+  overflow: hidden;
 }
 
 .selectedMoviesinList li {
@@ -86,18 +154,38 @@ li.movieList {
     font-size: 2rem;
 }
 
+// Search
+
+.searchForm {
+  margin: 60px 0;
+  
+  .formFlexContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  input {
+    margin-right: 20px;
+    width: calc(100% - 20px);
+  }
+}
+
 // Gallery 
 
-// .catalogue {
-//     display: flex;
-// }
+.catalogue {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  grid-gap: 3rem;
+}
+
 
 // Footer
 
 footer {
-    background-color: $secondaryColor;
-    text-align: center;
-    padding: 20px 0;
+  background-color: $secondaryColor;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 60px;
 }
 
 

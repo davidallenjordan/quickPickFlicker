@@ -11,7 +11,7 @@ const SavedList = (props) => {
                         <li className="movieList" key={listName.key}>
                             <div className="movieListTitle">
                                 <p>{listName.info.name}</p>
-                                <button onClick={() => {handleDeleteList(listName.key)}}>Delete List</button>
+                          <button className="trashButton" aria-label="Delete List" onClick={() => { handleDeleteList(listName.key) }}><i class="fas fa-trash-alt"></i></button>
                             </div>  
                         <div className="selectedMoviesinList">
                           <ul>
@@ -21,9 +21,9 @@ const SavedList = (props) => {
                                 return (
                                   <li key={`${listName.key}-${index}`}
                                     className="selectedMovies">
-                                    {listItem}
-                                    <button onClick={() => { handleDeleteMovie(listName.key, index) }}
-                                    >Delete Movie</button>
+                                    <p>{listItem}</p>
+                                    <button aria-label="Delete Movie" className="trashButtonMovie" onClick={() => { handleDeleteMovie(listName.key, index) }}
+                                    ><i class="fas fa-trash-alt"></i></button>
                                   </li>
                                 )
                               })

@@ -39,8 +39,9 @@ img {
 }
 
 button {
-    border: none;
-    cursor: pointer;
+  font-family: $bodyFont;
+  border: none;
+  cursor: pointer;
 }
 
 input {

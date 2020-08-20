@@ -45,36 +45,35 @@ class Gallery extends Component {
     const { movies, movieData } = this.props
     
     return (
-      <div className="catalogue">
+      <div className="catalogue wrapper">
     {
       movies.map((movie) => {
         return (
-          <Fragment key={`frag-${movie.id}`}>
+          <div key={`frag-${movie.id}`}>
           
           <div className="movie">
+            <p className="movieTitles">{`${movie.title}`}</p>
             <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
             alt={`Movie poster for ${movie.title}`} />
-            <p>{`${movie.title}`}</p>
           </div>
 
-              <ul>
+              <div className="buttonContainer">
                 {
                   movieData.map((movieList) => {
                     return (
-                      <li
-                        ><button onClick={() => {
+                      
+                      <button className="addMovieButton" onClick={() => {
                         this.handleAddMovie(movieList.key, movie.title)
                       }} >{`Add movie to ${movieList.info.name} list`}</button>
-                      </li>
                     )
 
                   })
 
                 }
 
-              </ul>
+              </div>
 
-            </Fragment>
+            </div>
           );
         })
       }

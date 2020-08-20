@@ -8,10 +8,14 @@ const SearchBar = (props) => {
   } = props
 
   return (
-    <div>
-      <form action="submit" onSubmit={handleSubmit}>
-      <input type="text" onChange={(e) => handleSearchText(e)}  />
-      <button onClick={ handleSearch }>SEARCH</button>
+    <div className="searchBar wrapper">
+      <form className="searchForm" action="submit" onSubmit={handleSubmit}>
+        <legend>Search for movies</legend>
+        <div className="formFlexContainer">
+          <label className="srOnly" >Type in a movie to search</label>
+          <input type="text" placeholder="Search for movies" onChange={(e) => handleSearchText(e)}  />
+          <button className="searchButton"  title="Search" aria-label="Search" onClick={handleSearch}><i class="fas fa-search"></i></button>
+        </div>
       </form>
     </div>
   )
