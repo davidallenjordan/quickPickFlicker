@@ -1,12 +1,15 @@
+// Colours
 $primaryColor: #A5D1C8;
 $secondaryColor: #B3D5DF;
 $tertiaryColor: #EADBC4;
 $black: #222222;
 $white: #FFFFFF;
 
+// Fonts
 $headingFont: 'Josefin Sans', sans-serif;
 $bodyFont: 'Lato', sans-serif;
 
+// Mixins
 @mixin font($fontFamily, $fontSize) {
     font-family: $fontFamily;
     font-size: $fontSize;

@@ -1,34 +1,38 @@
 
+// Medium / Small Screens
 @media (max-width: 768px) {
 
-    .headerContainer {
-        flex-direction: column-reverse;
-    }
+  .headerContainer {
+    flex-direction: column-reverse;
+  }
     
-    .titleContainer {
-        width: 100%;
-        text-align: center;
-        padding-top: 25px;
-    }
+  .titleContainer {
+    text-align: center;
+    padding-top: 25px;
+  }
 
-    .imageContainer {
-        width: 100%;
-    }
+  .imageContainer,
+  .titleContainer {
+    width: 100%;
+  }
 
-    h1 {
-        font-size: 5rem;
-    }
+  h1 {
+    font-size: 5rem;
+  }
 
-    h2 {
-        font-size: 2rem;
-    }
+  h2 {
+    font-size: 2rem;
+  }
 
-    p {
-        font-size: 1.6rem;
-    }
+  p {
+    font-size: 1.6rem;
+  }
+  // End of Query
 }
 
+// Small / Mobile Screens
 @media (max-width: 415px) {
+
   .newListContainer input,
   .searchForm input {
     width: 77%;
@@ -43,4 +47,5 @@
   legend {
     font-size: 2.5rem;
   }
+  // End of Query
 }

@@ -1,5 +1,8 @@
 import axios from 'axios'
 
+// Holds all the API calls and exports them
+
+// Initial displayed movies call
 export const discoverMovies = () => {
   return axios({
     url: `https://api.themoviedb.org/3/discover/movie`,
@@ -17,6 +20,7 @@ export const discoverMovies = () => {
   })
 }
 
+// Searched movies call
 export const searchMovies = (movieName) => {
   return axios({
     url: `https://api.themoviedb.org/3/search/movie`,
@@ -35,6 +39,7 @@ export const searchMovies = (movieName) => {
   })
 }
 
+// Gets movie details
 export const searchMovieDetails = (movieID) => {
   return axios({
     url: `https://api.themoviedb.org/3/movie/${movieID}`,

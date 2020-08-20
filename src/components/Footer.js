@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Footer attribution 
 
 const Footer = () => {
   return (
@@ -10,4 +11,5 @@ const Footer = () => {
     </footer>
   )
 }
+
 export default Footer;

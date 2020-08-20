@@ -1,107 +1,135 @@
+// Flexing Elements
+
+.headerContainer,
+.newListContainer,
+.movieListTitle,
+.selectedMovies,
+.formFlexContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
 // Header
 
 header {
-    background-color: $secondaryColor;
+  background-color: $secondaryColor;
 }
 
 .headerContainer {
-    display: flex;
-    padding: 60px 0;
-    justify-content: space-between;
-    align-items: center;
+  align-items: center;
 }
 
 .titleContainer {
-    width: 60%;
+  width: 60%;
 }
 
 .imageContainer {
-    width: 40%;
+  width: 40%;
 }
 
-// User List Component 
-
+// Header and UserList
+.headerContainer,
 .formContainer {
-    padding: 60px 0;
+  padding: 60px 0;
 }
 
-.newListContainer {
-    display: flex;
-    justify-content: space-between;
-}
+// UserList Component 
 
 .newListContainer input {
-    width: calc(100% - 20px);
-    margin-right: 20px;
+  width: calc(100% - 20px);
+  margin-right: 20px;
 }
 
 .newListButton {
   font-size: 4rem;
 }
 
-.searchButton {
+// Button Size
+.searchButton,
+.trashButton,
+.deleteMovieIcon {
   font-size: 2rem;
 }
 
 .newListButton,
 .searchButton {
-    padding: 3px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    color: $white;
-    background-color: $tertiaryColor;
+  width: 50px;
+  height: 50px;
 
-    &:hover,
-    &:focus {
-      color: $primaryColor;
-    }
+  padding: 3px;
+
+  border-radius: 50%;
+  color: $white;
+  background-color: $tertiaryColor;
+
+  &:hover,
+  &:focus {
+    color: $primaryColor;
+  }
 }
 
 .movieListContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  grid-gap: 3rem;
   margin-bottom: 25px;
+
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
 }
 
 .movieTitles {
   padding-bottom: 10px;
-  text-align: center;
+}
+
+// Grid Elements
+.movieListContainer,
+.buttonContainer,
+.catalogue {
+  display: grid;
+}
+
+// Grid Elements Gap
+.movieListContainer,
+.catalogue {
+  grid-gap: 3rem;
 }
 
 .buttonContainer {
-  word-wrap: break-word;
   margin-top: 10px;
-  display: grid;
+  word-wrap: break-word;
+
   grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
   gap: 10px;
+}
+
+// Centering
+.movieTitles,
+.addMovieButton,
+footer {
+  text-align: center;
 }
 
 .addMovieButton {
   max-width: 200px;
   padding: 10px 10px;
+
   font-size: 1.6rem;
 
-  text-align: center;
   border-radius: 5px;
   background: $primaryColor;
 }
 
 .addMovieButton:hover {
-    cursor: pointer;
-    transform: translateY(-2px);
-    transition: transform 150ms;
-    box-shadow: 0 3px 3px 0 #2b9348;
+  cursor: pointer;
+
+  transform: translateY(-2px);
+  transition: transform 150ms;
+
+  box-shadow: 0 3px 3px 0 #2b9348;
 }
+
 .addMovieButton:focus {
-    border: 2px solid darken($secondaryColor, 40);
+  border: 2px solid darken($secondaryColor, 40);
 }
 
 .trashButton {
-  background: $tertiaryColor;
-  font-size: 2rem;
-
   &:hover,
   &:focus {
     color: $primaryColor;
@@ -121,11 +149,8 @@ header {
 }
 
 .movieListTitle {
-  background-color: $tertiaryColor;
   padding: 10px 20px;
   border-radius: 5px;
-  display: flex;
-  justify-content: space-between;
 }
 
 .movieListTitle p {
@@ -133,25 +158,24 @@ header {
 }
 
 .selectedMoviesinList li {
-    border-bottom: 2px solid $black;
-    padding: 10px 20px;
+  border-bottom: 2px solid $black;
+  padding: 10px 20px;
 }
 
-.selectedMovies {
-    display: flex;
-    justify-content: space-between;
+.movieListTitle,
+.deleteListIcon,
+.trashButton {
+  background: $tertiaryColor;
 }
 
 .deleteListIcon {
-    color: $white;
-    background-color: $tertiaryColor;
-    font-size: 3rem;
+  color: $white;
+  font-size: 3rem;
 }
 
 .deleteMovieIcon {
-    color: $secondaryColor;
-    background-color: $white;
-    font-size: 2rem;
+  color: $secondaryColor;
+  background-color: $white;
 }
 
 // Search
@@ -159,11 +183,6 @@ header {
 .searchForm {
   margin: 60px 0;
   
-  .formFlexContainer {
-    display: flex;
-    justify-content: space-between;
-  }
-
   input {
     margin-right: 20px;
     width: calc(100% - 20px);
@@ -173,23 +192,19 @@ header {
 // Gallery 
 
 .catalogue {
-  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  grid-gap: 3rem;
 }
-
 
 // Footer
 
 footer {
-  background-color: $secondaryColor;
-  text-align: center;
   padding: 20px 0;
   margin-top: 60px;
+
+  background-color: $secondaryColor;
 }
 
-
-// Hides the first li in userlists
+// Error Handle for lists
 .selectedMovies:nth-of-type(1) {
   display: none;
 }
